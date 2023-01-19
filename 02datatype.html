@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 자료형</title>
+  </head>
+  <body>
+    <h1>자바스크립트 자료형</h1>
+    <h2>변수와 상수constant</h2>
+    <p>변수는 데이터를담는 그릇- var,let으로 선언</p>
+    <p>상수는 변하지 않는 값을 담은 그룻- const 으로선언</p>
+    <p>변수/상수 선언시 자료형을 기술할 필요없다</p>
+
+    <p>
+      변수 선언시 var이나 let(ES6에서 추가)을 사용 실무에서는 오류를 최소화하기
+      위해 let사용을 추천! 자바스크립트에서는 각 문장의 끝은 ;으로 마무리해야 함
+    </p>
+
+    <script>
+      document.write("1 + 2= ", 1 + 2, "<br>");
+      var x = 10;
+      var y = 2;
+      var z;
+      document.write("x+y=", x + y, "<br>");
+      let a;
+      document.write("z = ", z, "<br>");
+
+      var z = 10;
+      document.write("z =", z, "<br>");
+
+      document.write(5 + 3 * 2);
+
+      document.write("1 + 2= ", 1 + 2, "<br>");
+      document.write("10 / 3= ", 10 / 3, "<br>");
+      document.write("10 % 3= ", 10 % 3, "<br>");
+
+      x = 10;
+      y = 3; //변수즌 정수형
+      document.write("10 % 3= ", x / y, "<br>");
+
+      y = 3.14;
+      r = 5;
+      document.write("10 % 3= ", x / y, "<br>");
+
+      y = 1;
+      document.write("10 ", y / 0, "<br>");
+
+      y = "hello";
+      document.write("hello%0", y / 0, "<br>");
+      //
+      //let a=10;
+
+      /* y =12345678910123456789101234567891012345678910;
+     document. write("완전큰숫자= ",y, "<br>");*/
+
+      /*y= BigInt('12345678910123456789101234567891012345678910123456789101234567891012345678910');*/
+      y =
+        12345678910123456789101234567891012345678910123456789101234567891012345678910n;
+      document.write("완전큰숫자= ", y, "<br>");
+    </script>
+
+    <h2>자료형</h2>
+    <p>
+      자바스크립트 자료형에느 Number,String,
+      boolean,Null,Underine,BigInt,객테형등
+    </p>
+
+    <h2>숫자형</h2>
+    <p>Number형으로 정수 실두등을 다룰수 있음</p>
+    <p>BigInt형은 기존 정수보다 더 맣은 범위위 수를 다룰수있음</p>
+    <p>
+      한편 넘버형에는 일반덕인 숫자외에 추가적으로 NaN(not a number),
+      Infinity/-Infinity 등의 특수숫자갑등을 사용할수 있음
+    </p>
+    <p>따라서 말도 안되는 연산에도 오류는 발생하지 않음</p>
+
+    <h2>문자형</h2>
+    <p>
+      단일문자다 단일문자가 여러개 모인 문자열을 다룰때 사용 문자열을 정의
+      할때는 '',"",``등을 이용함
+    </p>
+
+    <script>
+      let say1 = "hello";
+      let say2 = "hello";
+      let say3 = `hello`;
+      document.write(say1, say2, say3, "<br>");
+
+      document.write(say1 + "" + say2 + " " + say3, "<br>");
+
+      let koreasong = `동해물과 \n백두산이\n`;
+      document.write(koreasong, "<br>");
+
+      koreasong = `동해물과<br>백두산이<br>`;
+      document.write(koreasong, "<br>");
+
+      koreasong = `동해물과
+      백두산이`;
+      alert(koreasong, "<br>");
+
+      a = 10;
+      b = 20;
+      document.write(`${a} + ${b} = ${a + b}<br>`);
+      //문자열char은  문자열string에서 개별 문자를 추출해서
+      //어떤 작업을 할 수 있음
+      // 문자열 선택 연산자
+      let say = "hello, world";
+      document.write(`${say[0]}, ${say[1]}, ${say[2]},<br>`);
+      //주민번호에서 성별코드 추출
+      let jumin = `123456-1234567`;
+      document.write(`님의 성별은 ${jumin[7]}입니다<br>`);
+    </script>
+
+    <h2>boolean 형</h2>
+    <p>논리형의 일종으로 true,false등의 논리값만 존재</p>
+    <script>
+      let isMarried = false;
+
+      document.write(`결혼여부: ${isMarried}<br>`);
+
+      let isGreated = 10 < 5;
+      document.write(`10<5: ${isMarried}<br>`);
+    </script>
+
+    <h2>Null</h2>
+    <p>null 값만 다루는 자료형</p>
+    <p>
+      null은 존재하지 않는 값, 비어 있는 값, 알수 없는 값을 나타내는데 사용<
+    </p>
+    <script>
+      let name = null; //변수는 현재 선언되지 않은 상태이다
+      document.write(`이름: ${name}<br>`);
+    </script>
+    <h2>undefined</h2>
+    <p>undefined값만 다루는 자료형</p>
+    <p>변수는 선언했지만 값이 할당되지 않은 상타를 나타내는 데 사용</p>
+    <script>
+      name = undefined; //변수는 현재 선언된 상태
+      document.write(`이름: ${name}<br>`);
+    </script>
+
+    <h2>객체형</h2>
+    <p>
+      String,Number, boolean형은 변수에 단 하나의 값만 표현가능-원시
+      primitive자료형
+    </p>
+    <p>
+      하지만 복잡한 프로그램의 경우 이겻으로는 다소 부족 데이터의 집합이나
+      개체를 표현하기 위해 객체 자료형이 도입-변수하나에 여러 종류의데이 터들을
+      담을 수 있음
+    </p>
+
+    <script>
+      //성적처러프로그램
+      //이름 국어 영어 수학을 초기화시켜서을 입력받아 총점 평균을 계산한뒤 결과 출력
+      name = `홍길동`;
+      let kor = 99;
+      let eng = 98;
+      let mat = 96;
+      let tot = kor + eng + mat;
+
+      let avg = tot / 3;
+      document.write(`<h1>성적처리 v1</h1>`);
+      document.write(`이름 :${name}<br>`);
+      document.write(`국어 :${kor}<br>`);
+      document.write(`영어 :${eng}<br>`);
+      document.write(`총점 :${tot}<br>`);
+      document.write(`평균 :${sum}<br>`);
+    </script>
+  </body>
+</html>
