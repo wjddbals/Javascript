@@ -53,5 +53,88 @@
       document.write("false + null =", true + null, "<br>");
       document.write("false + undefined =", false + undefined, ",<br>");
     </script>
+
+    <p>
+      복합할당연산자 : 할당 연산자와 산술 연산자를 혼합해서 표현식을 간단하게
+      작성하는데 사용
+    </p>
+
+    <script>
+      x = 1;
+      x = x + 1;
+      document.write("x=x+1:", x, "<br>");
+
+      x = 1;
+      x += 1;
+      document.write("x+=1:", x, "<br>");
+    </script>
+
+    <h2>비교연산자</h2>
+    <p>
+      좌항과 우항의 피연산자를 비교해서 큰지 작은지 같은지 알아보는 연산자
+      결과값은 true 나 false로 반환,타입은 자료형이다고 이해하라
+    </p>
+    <script>
+      x = 10;
+      y = 5;
+      document.write("10>5:", x > y, "<br>");
+      document.write("10==5:", x == y, "<br>");
+      document.write("10===5:", x === y, "<br>");
+
+      y = 10;
+      document.write("10===10:", x === y, "<br>");
+      document.write("10===10:", x === y, "<br>");
+      y = 10n;
+      document.write("10==10n:", x == y, "<br>"); //true
+      document.write("10===10n:", x === y, "<br>"); //false
+
+      y = "10";
+      document.write("10=='10':", x == y, "<br>");
+      //자바스크립트에서 ==연산자로 비교시 변수들의 자료형을 일치시키는
+      //암묵적 형변환 발생
+      //비교연산자는 경우에따라 수많은 부작용양산:===추천!값과 타입을 같이 비교하라
+      document.write("10==='10':", x === y, "<br>");
+    </script>
+    <h3>삼항연산자</h3>
+    <p>
+      조건문 if ~ eles의 sytantic sugar 변수 = 조건식 ? 참일때의 값 : 거짓일때의
+      값/조건식이 참일때
+    </p>
+    <script>
+      //평균점수가 60이상이면 합격 아니면 불합격이라 출력
+      let jumsu = 78.5;
+      let result = jumsu >= 60 ? `합격` : `불합격`;
+      document.write(`평균점수가 ${jumsu}
+    라면, 결과는 ${result} <br>`);
+    </script>
+    <h2>논리연산자</h2>
+    <p>boolean 표현식에 대한 논리합OR(||) 또는
+      논리곱AND(&&) 또는 부정NOT(!) 연산을
+      수행하는 기호</p>
+    <script>
+      document.write("true OR false':", true || false, "<br>");
+      document.write("true AND false':", true && false, "<br>");
+      document.write("1true OR 0false':", 1&&0, "<br>");
+    </script>
+    <script>
+      // FF - F, FT - T, TF - T, TT - T
+      // val = val1 || val2 || val3 의 경우
+      // 연산자 OR는 첫번째 truthy를 출력함
+      document.write(`1 || 0:`, 1 || 0, "<br>");
+      document.write(`null || 0:`, null || 1, "<br>");
+      document.write(`undefined || 0:`, undefined || 1, "<br>");
+      document.write(`null || 1 || undefiened :`, null || 1|| undefined, "<br>");
+      //앤드연산자 한개/ 두개 짜리 연산의 결과가 달라진다
+      document.write(`1 && 0:`, 1 && 0, "<br>");
+      document.write(`null && 0:`, null && 1, "<br>");
+      document.write(`undefined && 0:`, undefined && 1, "<br>");
+      document.write(`null && 1 && undefiened :`, null && 1 && undefined, "<br>");
+      document.write(`null && 1 && 2 :`, null && 1 && 2, "<br>");
+    </script>
+    <script>
+      document.write(`null & 1 & undefiened :`, null & 1 & undefined, "<br>");
+      document.write(`null | 1 | undefiened :`, null | 1 | undefined, "<br>");
+    </script>
+
   </body>
 </html>
