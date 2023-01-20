@@ -13,10 +13,10 @@
       만듦
     </p>
     <script>
-      10; //리터럴 표현식
+     /* 10; //리터럴 표현식
       sum; //식별자 표현식
       10 + 20; //연산자 표현식
-      Date(); //함수 표현식
+      Date(); //함수 표현식*/
     </script>
 
     <h2>연산자</h2>
@@ -135,6 +135,54 @@
       document.write(`null & 1 & undefiened :`, null & 1 & undefined, "<br>");
       document.write(`null | 1 | undefiened :`, null | 1 | undefined, "<br>");
     </script>
+    <h2>변수의 자료형 알아보기</h2>
+      <p>typeof 연산자를 이용하면 변수나 값으 자료형을 출력함</p>
+    <script>
+      document.write(`숫자10의 자료형 :`, typeof (10), "<br>");
+      document.write(`문자 abc의 자료형 :`, typeof (`abc`), "<br>");
+      document.write(`숫자 10n 자료형 :`, typeof (`10n`), "<br>");
+      document.write(`undefined 자료형 :`, typeof (undefined), "<br>");
+    </script>
+    <h2>자료형 변환</h2>
+    <p>함수와 연산자에 전달되는 값은 표현식에 적합하게 적절한 자료형으로 변환됨(묵시적 형변환)</p>
+    <p>하지만 상황에 따라 의도를 갖고 원하는 자료형으로 직접 변환해야 하는 경우도 있음 (명시적 형번환)</p>
+    <p>어떤 값을 숫자형으로 변환하고 싶다면 Number()사용</p>
+    <p>어떤 값을 문자형으로 변환하고 싶다면 string()사용</p>
+    <p>어떤 값을 블리언형형으로 변환하고 싶다면 boolean()사용</p>
+    <script>
+     /* //나이 계산 v1:현재년도- 생년년도
+      let birthyear =prompt(`생년년도는?`);
+      let age = 2023-birthyear; 2023-`입력값`
+      document.write(`생년년도:`,birthyear,`<br>`);
+      document.write(`당신의 나이:`,age,`<br>`);*/
+    </script>
+  <script>
+    ////성적처리프로그램v2
+    //이름 국어 영어 수학을 초기화시켜서을 입력받아 총점 평균,학점을을 계산한뒤 결과 출력
+    //단 학점은 수우미양가 중 하나가 출력되어야 함
+   let name = prompt(`이름은?`);
+   let kor = Number(prompt(`국어는?`));
+   let eng =Number(prompt(`영어는?`));
+   let mat =Number(prompt(`수학은?`));
 
+
+    let tot = kor + eng + mat ;
+    let avg = tot / 3;
+    console.log(tot);
+    console.log(avg);
+
+    let grd = ( avg >=90) ? `수`:``;
+              ( avg >=80) ? `우`:``;
+              ( avg >=70) ? `미`:``;
+              ( avg >=60) ? `양`:`가`;
+
+        console.log(grd);
+        document.write(`이름:${name}<br>
+             국어 : ${kor}<br> 영어 :${eng}<br> 수학:${mat}<br>
+                총점 : ${tot}<br> 평균 :${avg}<br> 학점 :${grd}<br>`);
+
+
+
+  </script>
   </body>
 </html>
