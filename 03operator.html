@@ -156,7 +156,7 @@
       document.write(`생년년도:`,birthyear,`<br>`);
       document.write(`당신의 나이:`,age,`<br>`);*/
     </script>
-  <script>
+ <!-- <script>
     ////성적처리프로그램v2
     //이름 국어 영어 수학을 초기화시켜서을 입력받아 총점 평균,학점을을 계산한뒤 결과 출력
     //단 학점은 수우미양가 중 하나가 출력되어야 함
@@ -167,6 +167,38 @@
 
 
     let tot = kor + eng + mat ;
+    let avg = tot / 3;
+    console.log(tot);
+    console.log(avg);
+
+    let grd = ( avg >=90) ? `수`:``;
+              ( avg >=80) ? `우`:``;
+              ( avg >=70) ? `미`:``;
+              ( avg >=60) ? `양`:`가`;
+
+        console.log(grd);
+        document.write(`이름:${name}<br>
+             국어 : ${kor}<br> 영어 :${eng}<br> 수학:${mat}<br>
+                총점 : ${tot}<br> 평균 :${avg}<br> 학점 :${grd}<br>`);
+-->
+
+
+  </script>
+  <script>
+    console.log("+true:",+false);
+    console.log("+undefined:",+undefined);
+    console.log("+[]:",+[]);
+    ////성적처리프로그램v2b
+    //이름 국어 영어 수학을 초기화시켜서을 입력받아 총점 평균,학점을을 계산한뒤 결과 출력
+    //단 학점은 수우미양가 중 하나가 출력되어야 함
+   let name = prompt(`이름은?`);
+   let kor = prompt(`국어는?`);
+   let eng =prompt(`영어는?`);
+   let mat =prompt(`수학은?`);
+
+    //숫자가 아닌 값을 숫자형으로 묵시적으로 형변환하는 방법은
+    // + 단항연산자를 사용
+    let tot = (+kor) + (+eng) + (+mat) ;
     let avg = tot / 3;
     console.log(tot);
     console.log(avg);
