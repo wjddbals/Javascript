@@ -40,7 +40,7 @@
     </script>
     <script>
       //점심메뉴5개  저장하기 -2b
-       menus = [];
+      menus = [];
       menus[0] = "라면";
       menus[1] = "탕수육";
       menus[2] = "짜장면";
@@ -54,84 +54,81 @@
       //점심메뉴5개  저장하기 -2c
       //배열명.push(값)
       menus = [];
-      menus.push("라면") ;
-      menus.push("탕수육") ;
-      menus.push("자장면") ;
-      menus.push("민트초코") ;
-      menus.push("김치") ;
+      menus.push("라면");
+      menus.push("탕수육");
+      menus.push("자장면");
+      menus.push("민트초코");
+      menus.push("김치");
 
-        //배열의 크기:배열.length  4대신 씀
-      document.write(menus.length,'<br>');
-      for (let i = 0; i <= menus.length -1; ++i) {
-        document.write(menus[i], '<br>');
+      //배열의 크기:배열.length  4대신 씀
+      document.write(menus.length, "<br>");
+      for (let i = 0; i <= menus.length - 1; ++i) {
+        document.write(menus[i], "<br>");
       }
     </script>
     <p>for index</p>
     <script>
-        //점심메뉴개 출력하기
-        //for(let 인덱스 in 배열명)//주로 사용함
-        for (let idx in menus ) {
-            document.write(menus[idx], '<br>');
-        }
+      //점심메뉴개 출력하기
+      //for(let 인덱스 in 배열명)//주로 사용함
+      for (let idx in menus) {
+        document.write(menus[idx], "<br>");
+      }
 
-        //for(let 값 of 배열명)//이방법 추천함
-        for (let val of menus) {
-            document.write(val, '<br>');
-
-        }
-        //for(let [인텍스,값] of 배열명.entries())
-        for (let [idx,val]  of menus.entries() ) {
-            document.write(idx, val,'<br>');
-        }
+      //for(let 값 of 배열명)//이방법 추천함
+      for (let val of menus) {
+        document.write(val, "<br>");
+      }
+      //for(let [인텍스,값] of 배열명.entries())
+      for (let [idx, val] of menus.entries()) {
+        document.write(idx, val, "<br>");
+      }
     </script>
 
     <p>성적4</p>
     <script>
-        //성적처리프로그램v3
-        //3명의 학생에 대해
-        //이름 국어 영어 수학을 초기화시켜서을 입력받아 총점 평균,학점을을 계산한뒤 결과 출력
-        //단 학점은 수우미양가 중 하나가 출력되어야 함
-        let names =[];
-        let kors =[];
-        let engs =[];
-        let mats =[];
-        let tots =[];
-        let avgs =[];
-        let grds =[];
+      //성적처리프로그램v3
+      //3명의 학생에 대해
+      //이름 국어 영어 수학을 초기화시켜서을 입력받아 총점 평균,학점을을 계산한뒤 결과 출력
+      //단 학점은 수우미양가 중 하나가 출력되어야 함
+      let names = [];
+      let kors = [];
+      let engs = [];
+      let mats = [];
+      let tots = [];
+      let avgs = [];
+      let grds = [];
 
-        for ( let  i=0; i <= 2;++i)  {
-        names.push( prompt(`${i+1}번 학생의 이름은?`));
-         kors.push(parseInt( prompt(`${i+1}번 국어는?`)));
-         engs.push (parseInt(prompt(`영어는?`)));
-         mats.push (parseInt(prompt(`수학은?`)));
+      for (let i = 0; i <= 2; ++i) {
+        names.push(prompt(`${i + 1}번 학생의 이름은?`));
+        kors.push(parseInt(prompt(`${i + 1}번 국어는?`)));
+        engs.push(parseInt(prompt(`영어는?`)));
+        mats.push(parseInt(prompt(`수학은?`)));
 
-         tots.push(kors[i]+engs[i]+mats[i]);
-        avgs.push( tots[i]/3);
+        tots.push(kors[i] + engs[i] + mats[i]);
+        avgs.push(tots[i] / 3);
 
-          switch (parseInt(avgs[i] /10)){
+        switch (parseInt(avgs[i] / 10)) {
           case 10:
           case 9:
-            grds.push('수');break;
+            grds.push("수");
+            break;
           case 8:
-            grds.push('우');break;
+            grds.push("우");
+            break;
           case 7:
-            grds.push('미');break;
+            grds.push("미");
+            break;
           case 6:
-            grds.push('양');break;
+            grds.push("양");
+            break;
           default:
-            grds.push('가');break;
+            grds.push("가");
+            break;
         } //switch
-        document.write(`${names[i]} ${kors[i]} ${engs[i]} ${mats[i]} <br>`
-        `${tots[i]} ${avgs[i]} ${grds[i]}<br>`);
-
-        } //for
-
-
-
-
-
-
+        document.write(`${names[i]} ${kors[i]} ${engs[i]} ${mats[i]} <br>`,
+                `${tots[i]} ${avgs[i]} ${grds[i]}<br>`);
+      } //for
     </script>
-  <p></p>
+    <p></p>
   </body>
 </html>
