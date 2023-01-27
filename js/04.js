@@ -1,4 +1,4 @@
-let  lotto_v1 = (lotto,match) =>{
+let  lotto_v1 = (lotto,mykey) =>{
     let match =0;
     let msg =`아쉽지만 다음기회에`;
 
@@ -13,7 +13,7 @@ let  lotto_v1 = (lotto,match) =>{
     if (lotto[2]==mykey [0] ||  lotto[2]==mykey [1]
     || lotto[2]==mykey [2]) {++match;}*/
 
-    for (let i =0 ; i <=2;++i){
+    for (let i =0 ; i <=2; ++i){
         for (let  j =0; j<=2; ++j){
             if (lotto[i] == mykey[j]) {++match;}
         }
