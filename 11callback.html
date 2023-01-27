@@ -1,10 +1,96 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>콜백함수</title>
+  </head>
+  <body>
+    <h1>자바스크립트 콜백 함수</h1>
+    <h2>개요</h2>
+    <p>
+      다른 함수의 인자로 사용되는 함수 또는 어떤 이벤트에 의해 호출되는 함수를
+      의미 함수를 값으로쓰는게 아니라 함수로 사용한다
+    </p>
+    <p>사용하는 이유는 프로그램이 실행되는 동안 지속적으로 수행해야 하는 작업이 잇을때 사용-비동기 프로그래밍</p>
+    <p>어떤 정보를 원하는 쪽이 정보를 제공하는 쪽에게 반복적으로 확인 요구하는 것보다
+    정보를 제공하는 쪽이 정보를 원하는 쪽에게 통보하는 것이 효율적임</p>
+    <p>달걀을 삶을때 적정시간이 되었는지 확인해야 하거나 친구랑 놀고 잇을때 집에 가야할 시간을 확인해야 할때 타이머 콜백함수를 이용하는
+    것돠 동일</p>
 
-</body>
+    <p>es5/Es6 에서는 promise 나 asycn/await 등이 추가 되어 콜백함수의 사용은 줄이는 추세임</p>
+  <script>
+    let showHello10 = (callback) => {
+      for (let i =1; i <= 10; ++i) {
+        callback();//콜백함수 호출
+      }
+    }
+
+    let sayHello = () =>
+            document.write('Hello, world!!<br>');
+    showHello10(sayHello);//콜백함수를 인자로 전달할때는 ()생략
+
+
+  </script>
+    <h2>타이머 함수</h2>
+    <p>특정 시간이 지난후에 함수를 실행하려면 setTimeout함수를 사용
+    특정 시간마다 함수를 실행하려면 setInterval함수를 사용</p>
+
+  <script>
+    //sayHello 함수를 5초 후에 호출함
+    //1초는 1000밀리초로 변환해서 사용
+    setTimeout(sayHello,5000 );
+  </script>
+  <script>
+    //sayHello 함수를 5초 후에 호출함
+    //1초는 1000밀리초로 변환해서 사용
+    let sayHello2=()=>
+            console.log(`hello`);
+    setTimeout(sayHello2,5000 );
+  </script>
+  <script>
+    //sayHello2 함수를 5초 후에 호출함
+
+
+
+    setInterval(sayHello2,5000 );
+  </script>
+
+  <script>
+    //현재 날쨔와시간을 출력하는 함수
+    //2023-01-27 13:15:30
+    let showDateTime = () =>{
+      let today = new Date();
+
+      let datetime = today.getFullYear() +'-';
+      datetime  += today.getMonth() +1  + '-';
+      datetime += today.getDate() + '-';
+      datetime += today.getHours() + ':';
+      datetime  += today.getMinutes()  + ':';
+      datetime += today.getSeconds() ;
+
+      document.write((datetime));//console.log(datetime);
+    }; //  //
+    /*
+      let result =`오후입니다`;
+      hour = time[0] + time[1];
+
+      if (hour < 12) {
+        result = `오전입니다`;}
+      return `${hour}시는 ${result}`;
+
+    }
+
+    document.write( showDateTime('2023-01-27 13:15:30'));
+
+*/
+
+    //옵선 요일 오전오후 출력
+    //showDateTime
+
+    //1초마다 현재날짜와 시간을 출력
+    setInterval(showDateTime,1000);
+
+
+  </script>
+  </body>
 </html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ex</title>
+  </head>
+  <body>
+
+    <script src="../js/04.js"></script>
+    <script>
+
+
+       //복권프로그램v1
+       //25. 다음 조건을 만족하는 복권 발행 프로그램을 작성해보세요(Lotto) 1>>담에 함수로 만들어봐라
+       //가 상용자로부터 복권 숫자 3자리를 입력 받으세요 (yourkey)
+       //나 변수에 임의의 복권 숫자 3자리를 초기화 합니다(lottokey)
+       //다 사용자가 입력한 복권 숫자가 모두 일치 :상금 백만지급
+       //라 일치하지 않는 경우 :아쉽지만 다음기회를 라고 출력
+       //lotto:657, mykey:452=>1개일치
+       //lotto:657, mykey:524=>1개일치
+       //lotto:657, mykey:123=>0개일치
+       //lotto:657, mykey:726=>2개일치
+       //lotto:657, mykey:626=>2개일치
+
+       let lotto =`357`;
+       let mykey =`726`; //prompt('숫자3개를 입력하세요');
+
+       result= lotto_v1(lotto,mykey);
+       document.write(result,'<br>');
+      /* let match =0;
+       let msg =`아쉽지만`;
+        //숫자하나씩 비교
+       if (lotto[0] ==mykey [0] ||  lotto[0]== mykey [1]
+       || lotto[0]== mykey [2]) { ++match;}
+
+       if (lotto[1] == mykey [0] ||  lotto[1]== mykey [1]
+       || lotto[1] == mykey [2]) { ++match;}
+
+
+       if (lotto[2]==mykey [0] ||  lotto[2]==mykey [1]
+       || lotto[2]==mykey [2]) {++match;}
+       if (match==1) { msg ='1개일치';}
+       else  if (match ==2){msg ='2개일치';}
+       else  if (match ==3){msg ='당첨';}
+
+       document.write((lotto[0],lotto[1).lotto[2); */
+
+
+
+    </script>
+
+    <script>
+      //26.사용자가 연봉과 결혼 여부를 입력하면 다음의 세금율에 의해 납부해야 할 세금을 계산하는프로그램을
+      //작성하세요 (Tax)
+      //가 미혼인 경우 :연봉 30000미만 -10%, 연봉 3000이상 -25%
+      //나 결혼인경우 :연봉 6000미만-15%, 연봉 6000이상 -35%
+
+      let yearmoney = prompt('연봉을 입력하세요');
+      let ismarried = prompt(' 결혼하셧나요?');
+
+      if (ismarried == false) {
+        document.write(${yearmoney*1.1});
+
+      } else {
+        document.write(${yearmoney*1.25})
+      } if (ismarried ==true) {
+        document.write(`${yearmoney * 1.15}`);
+      }else {
+        document.write(`${yearmoney*1.35}`);
+      }
+    </script>
+
+    <script>
+      //30.다음조건에 따라 숫자 맞추기 프로그램을 작성하라(CatchNumber)
+      //가사용자로부터 1 -100사이의 숫자를 입력 받으세요(num1)
+      //나 변수에 임의의 숫자 3자리를 초기화 합니다(num2)
+      //다 num1이 num2보다 크면 "추측한 숫자가 큽니다"라고 출력
+      //라 num1이 num2보다 작으면 "추측한 숫자가 작습니다"라고출력
+      //마 num1이 num2가 같으면 빙고 숫자를 맡췄습니다라고 출력
+
+      let num1 = prompt("1~100사이의 숫자를 입력하세요");
+      let num2 = 456;
+
+      if (num1 > num2) {
+        document.write("추측한 숫자가 큽니다, <br>");
+      }
+      if (num1 < num2) {
+        document.write("추측한 숫자가 작습니다, <br>");
+      }
+      if (num1 == num2) {
+        document.write("빙고 숫자를 맡췃습니다 <br>");
+      }
+
+      document.write();
+    </script>
+    <script>
+      //32.키보드로 정수를 하나 입력받아 다음 조건에따라 결과를 출력하는 프로그램을 작성하라
+      //(CheckNumber)
+      // 가 입력한 값이 10000보다 작으면 "10000미만"이라 츨략
+      // 나 입력한 값이 10000 이상 20000미만 이면 "1000~20000"이라 출력
+      //다 입력한 값이 20000 이상 30000미만 이면 "20000~30000"이라 출력
+      //라.입력한 값이 그 이외 값이면 범위밖 값이라 출력
+
+      let CheckNumber = prompt("정수를 입력하세요");
+
+      if (CheckNumber < 10000) {
+        document.write("10000 미만");
+      }
+      if (10000 <= CheckNumber < 20000) {
+        document.write("10000~20000입니다 <br>");
+      }
+      if (20000 <= CheckNumber < 30000) {
+        document.write("20000~30000입니다 <br>");
+      }
+    </script>
+    <script>
+      //33.임의의 숫자 6자리를 입력하면 신용카드의 종류와 은행정보를 출력하는
+      //프로그램을 작성해보세요 (CardCheck)
+
+      let nums2 = 123456;
+      let card = ``;
+      let bankinfo = ``;
+
+      if (nums2 == 123456) {
+        document.write(`당신의 카드는${card}이고 은행은${bankinfo}입니다 <br>`);
+      }
+    </script>
+    <script>
+      //35 (JCB카드)
+      // 356317 - NH농협카드, 356901-신한카드,356912-KB국민카드
+      //4(비자카드)
+      //404825- 비씨카드, 438676-신한카드,457973-국민은행
+      //5(마스타카드,Maestro)
+      // 515594 - 신한카드, 524353-외한카드,540926-국민은행
+    </script>
+
+    <script>
+      //48. 지금 현재 수지의 통장잔액이 25,000원이다 은행이자가 연6%라고 가정할때 몇년이 지나야 통장잔액이 지금의
+      //2배를 넘는지 알아보는 프로그램을 아래 그림을 참고하여 작성하여라.(ComputeInvestment)
+      //원금25,000원에 연6%를 적용하면 12년뒤에야 2배 수익이 납니다.
+      let accmoney = `25,000`;
+      let inrate = `6%`;
+      let result = `12년 뒤에 2배 수익이납니다<br>`;
+      for (let i = 12; i <= 12; ++i) {
+        document.write(result);
+      }
+    </script>
+
+    <script></script>
+  </body>
+</html>
