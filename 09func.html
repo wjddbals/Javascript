@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>함수</title>
+  </head>
+  <body>
+    <script src="js/08func.js"></script>
+    <script>
+      showStarPyramid(10);
+
+      let year = 2023;
+      let result = computeLeapYear(year);
+      document.write(result); //체크하기
+
+      computeSungJuk(99, 98, 98);
+    </script>
+    <h2>익명함수</h2>
+    <p>
+      자바스크립트 함수는 1급시민이므로 값으로 취급되는 언어 따라서 함수
+      익명으로 정의한 후 변수에 대입하는 식으로 함수를 선언할수도 있음
+    </p>
+  <script>
+      let  sayHello4b= function(msg) {
+         return `hello,${msg} <br>`;
+      }
+        result=sayHello4b(`1급시민`);
+      document.write(result);
+  </script>
+    <h2>화살표 함수</h2>
+
+    <p>es6에서 추가된 기능으로 함수 선언을 간단하게 작성 가능
+    즉 function이라는 키워드 새신 =>를 이용해서 함수를 선언할 수 있음</p>
+
+    <script>
+        //변수명 = ()=>{ 코드}
+        let  sayHello5b= (msg)=> {
+            return `hello,${msg} <br>`;
+        }
+
+        result = sayHello5b(`화살표 함수`);
+        document.write(result);
+    </script>
+    <script>
+        //변수명 = ()=>코드
+        let  sayHello6b= (msg)=>
+            document.write(`hello,${msg} <br>`) ;
+
+
+        sayHello6b(`괄호 생략 화살표 함수`);//리절트 없어도 된다 이함수는
+        let  sayHello7b= (msg)=>
+        `hello,${msg} <br>`;
+
+
+        result = sayHello7b(`괄호,리턴 생략  화살표 함수`);//리절트 없어도 된다 이함수는
+        document.write(result);
+    </script>
+  <script>
+    //부가세 계산 프로그램:computeVAT
+    //금액을 입력하면 부가세를 계산해서 출력
+
+    //선언형
+
+    function computeVAT1(fee) {
+        return fee*0.1 ;
+    }
+    let fee =15000;
+    document.write(`${fee}원의 부가세는 ${computeVAT1(fee)}`);
+
+  /*//익명
+    computeVAT2(fee) {
+      return fee*0.1 <br>;
+    }
+    let fee =15000;
+    document.write(`${fee}원의 부가세는 ${computeVAT1(fee)}`);
+
+
+    //화살표1
+    computeVAT2(fee) {
+      return fee*0.1 <br>;
+    }
+    let fee =15000;
+    document.write(`${fee}원의 부가세는 ${computeVAT1(fee)}`);
+*/
+
+    //화살표2
+    let  computeVAT4 =(fee) =>
+    document.write(fee*0.1 );
+
+    computeVAT4(fee);
+      document.write(`원<br>`);
+    //화살표3
+   let  computeVAT5 =(fee) =>fee*0.1;
+    document.write((`${fee}원의 부가세는 ${computeVAT5(fee)}원입니다`))
+
+
+  </script>
+
+  </body>
+</html>
