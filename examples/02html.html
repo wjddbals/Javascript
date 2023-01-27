@@ -1,129 +1,95 @@
 <!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <title>test</title>
-  </head>
-  <body>
-    <h2>
-      9각 부울 표현식에 대한 값을 계산하여라 자바는 단축식 평가 short-circuit
-      evaluation을 사용한다는 점에 주의 하여라
-    </h2>
-    <script>
-      document.write(
-        `true && false && true || true : `,
-        (true && false && true) || true,
-        "<br>"
-      ); // true
-      //나 true || true && true && false == > false
-      //다 (true && false)||(true && !false) || (false && !false) ==> true
-      //(2<3) || (5>2) && !(4==4)|| 9!=4 ==> true
-      //6==9 || 5<6 && 8<4 || 4>3 ==> true
-      document.write(
-        `true || true && true && false : `,
-        true || (true && true && false),
-        "<br>"
-      );
-      document.write(
-        `(true && false)||(true && !false) || (false && !false) : `,
-        (true && false) || (true && !false) || (false && !false),
-        "<br>"
-      );
-      document.write(
-        `(2<3) || (5>2) && !(4==4)|| 9!=4 : `,
-        2 < 3 || (5 > 2 && !(4 == 4)) || 9 != 4,
-        "<br>"
-      );
-    </script>
-    <p>다음중 유효한 표현식을 찾고 그 결과 값으 데이터 유형을 서술하여라</p>
-    <script>
-      document.write("27/13 + 4 :", typeof (27 / 13 + 4), "<br>");
-      document.write("27/13 + 4.0 :", typeof (27 / 13 + 4.0), "<br>");
-      document.write("42.7 %3 +18 :", typeof ((42.7 % 3) + 18), "<br>");
-      document.write("(3<4) && 5/8 :", typeof (3 < 4 && 5 / 8), "<br>");
-      document.write("23/5 +23/5.0 :", typeof (23 / 5 + 23 / 5.0), "<br>");
-      document.write("2.0 +`a` :", typeof (2.0 + `a`), "<br>");
-      document.write("2 + `a` :", typeof (2 + `a`), "<br>");
-      document.write("`a`+`b` :", typeof (`a` + `b`), "<br>");
-      document.write("`a`/`b` :", typeof (`a` / `b`), "<br>");
-      document.write("`a`&&!`b` :", typeof (`a` && !`b`), "<br>");
-      document.write("(double)`a`/`b` :", typeof (`a` && !`b`), "<br>");
-    </script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Title</title>
+</head>
+<body>
+<h2>이름,몸무게,나이 출력하기</h2>
+<script>
+  // 변수선언
+  let name = prompt("이름은?");
+  let weight = prompt("몸무게는?");
+  let age = prompt("나이는?");
 
-    <p>
-      11. 이름과 몸무게 나이를 변수로 선언하고 자신의 것을 값으로 초기화하는
-      프로그램을 작성하여라
-    </p>
-    <script>
-      let name = "정정정"; //prompt(`이름은`?);
-      let age = `21`;
-      let weight = 51;
-      document.write(`이름: ${name},"<br>", 나이: ${age}, 몸무게: ${weight}`);
+  // 처리
 
-      let result = `이름:${name} <br>`;
-      result += `나이:${age} <br>`;
-      result += `몸무게:${weight} <br>`;
-      document.write(result);
-    </script>
+  // 출력
+  // document.write("이름 : ", name, "<br>");
+  // document.write("몸무게 : ", weight, "<br>");
+  // document.write("나이 : ", age, "<br>");
 
-    <p>12 생년월일을 이용해서 나이를 계산하는 프로그램을 작성하여라</p>
+  let result = `이름 : ${name} <br>`;
+  result += `몸무게 : ${weight} <br>`;
+  result += `나이 : ${age} <br>`;
 
-    <!--<script>
-      let year = 2023; //현재년
-      let month = 1; //
-      let day = 20;
+  document.write(result);
+</script>
 
-      let beyear = Number(prompt(`생년year는?`));
-      month = Number(prompt(`생월month은?`));
-      bday = Number(prompt(`생일day은?`));
+<h2>생년월일로 나이계산하기</h2>
+<script>
+  // 변수선언
+  let year = 2023;  // 현재년
+  let month = 1;    // 현재월
+  let day = 20;     // 현재일
 
-      let ispassed = false;
-      //let age =0;
-      age = year - byear;
-      age = month > bmonth && day > bday ? age : age - 1;
-      //처리 -나이계산
+  let byear = Number(prompt("생년year은?"));
+  let bmonth = Number(prompt("생월month은?"));
+  let bday = Number(prompt("생일day은?"));
 
-      //결과 출력
-      result = `현재년월일:${year}년 ${month}월 ${day}일 <br>`;
-      result += `생년월일:${byear}년 ${bmonth}월 ${bday}일 <br>`;
-      result += `나이:${age}`;
+  // let age = 0;
 
-      document.write(result);
-    </script>-->
-    <p>구구단 중 7단을 출력하는 프로그램을 작성하여라</p>
-    <script>
-        let dan =7;
-     result =`${dan}*1 = ${dan*1}  <br>`;
-     result +=`${dan}*2 = ${dan*2}  <br>`;
-     result +=`${dan}*3 = ${dan*3}  <br>`;
-     result +=`${dan}*4 = ${dan*4}  <br>`;
-     result +=`${dan}*5 = ${dan*5}  <br>`;
-     result +=`${dan}*6 = ${dan*6}  <br>`;
-     result +=`${dan}*7 = ${dan*7}  <br>`;
-     result +=`${dan}*8 = ${dan*8}  <br>`;
-     result +=`${dan}*9 = ${dan*9}  <br>`;
+  // 처리 - 나이계산 (2023, 2002)
+  // 만나이 = 현재년도 - 출생연도 - 1;
+  // 단, 생일이 지났으면 만나이 + 1
+  age = year - byear;
+  age = (month > bmonth && day > bday) ? age : age - 1;
 
-        document.write(result);
-    </script>
-  <h2>시간계산하기</h2>
-  <script>
-     let daysec =86400;
-      let hoursec =3600;
-      let minsec =60;
+  // 결과출력
+  result = `현재년월일 : ${year}년 ${month}월 ${day}일 <br>`;
+  result += `생년월일 : ${byear}년 ${bmonth}월 ${bday}일 <br>`;
+  result += `나이 : ${age}`;
 
-      data1 = 1234567890;
-      data2 = 98765;
-      data3 =12345;
-        //pareInt:값을 정수형으로 변환
-      result =`${data1}초는 약 ${parseInt(data1/daysec)}이다<br>`;
-      result +=`${data2}초는 ${parseInt(data2/hoursec)}이다<br>`;
-      result +=`${data3}초는 ${data3/minsec}이다<br>`;
+  document.write(result);
+</script>
 
-      document.write(result);
+<h2>구구단</h2>
+<script>
+  let dan = 7;
 
+  // result = `7 x 1 = 7 <br>`;
+  // result = `7 x 2 = 14 <br>`;
+  // result = `7 x 3 = 21 <br>`;
 
-  </script>
+  result = `${dan} x 1 = ${dan * 1} <br>`;
+  result += `${dan} x 2 = ${dan * 2} <br>`;
+  result += `${dan} x 3 = ${dan * 3} <br>`;
+  result += `${dan} x 4 = ${dan * 4} <br>`;
+  result += `${dan} x 5 = ${dan * 5} <br>`;
+  result += `${dan} x 6 = ${dan * 6} <br>`;
+  result += `${dan} x 7 = ${dan * 7} <br>`;
+  result += `${dan} x 8 = ${dan * 8} <br>`;
+  result += `${dan} x 9 = ${dan * 9} <br>`;
 
-  </script>
-  </body>
+  document.write(result);
+</script>
+
+<h2>시간 계산하기</h2>
+<script>
+  let daysec = 86400;
+  let hoursec = 3600;
+  let minsec = 60;
+
+  data1 = 1234567890;
+  data2 = 98765;
+  data3 = 12345;
+
+  // parseInt : 값을 정수형으로 변환
+  result = `${data1}초는 약 ${parseInt(data1 / daysec)}일이다 <br>`;
+  result += `${data2}초는 약 ${parseInt(data2 / hoursec)}시간이다 <br>`;
+  result += `${data3}초는 약 ${parseInt(data3 / minsec)}분이다 <br>`;
+
+  document.write(result);
+</script>
+</body>
 </html>
