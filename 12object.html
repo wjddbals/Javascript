@@ -210,29 +210,24 @@
     sungJuk.eng =98;
     sungJuk.mat =97;
 
-    function computeSungJuk (kor,eng,mat){
+    function computeSungJuk (kor,eng,mat) {
 
       switch (parseInt(avg / 10)) {
         case 10:
         case 9:
-          grd:"수";break;
-
+          grd = '수';
+          break;
         case 8:
-          grd:'우';break;
-
+          grd = '우';
+          break;
         case 7:
-          grd:"미"; break;
-
+          grd = '미';
+          break;
         case 6:
-          grd:"양"; break;
-
-        default:
-          grd:'가'; break;
-
+          grd = '양';
+          break;
       }
-
     }
-
     document.write(sungJuk());
 
 
