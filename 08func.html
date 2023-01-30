@@ -56,10 +56,10 @@
         //윤년여부를 계산하는 함수:computeLeapYear
 
         function computeLeapYear (year) {
-          let result='평년입니다';
+          let result = '평년입니다';
 
           if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-            result =`윤년입니다<br>`;
+            result = `윤년입니다<br>`;
           }
           return `${year}년은 ${result}`;
         }
@@ -73,7 +73,7 @@
             document.write(year, `윤년입니다<br>`);
         } else {
             document.write(year, `평년입니다<br>`);*/
-        }
+
     </script>
     <script>
       //층수를 입력받아 별*피라미드 출력:showStarPyramid
@@ -94,18 +94,19 @@
     </script>
 
     <script>
-      //시분초를 입력받아 오전 오후 구분하여 출력:showAMPM
+      // 시분초를 입력받아
+      // 오전, 오후 구분하여 출력 : showAMPM
       function showAMPM(time) {
-        let result =`오후입니다`;//
+        let result = '오후입니다!!';
+        let hour = time[0] + time[1];
 
-        if (hour < 12) {
-          result = `오전입니다`;}
+        if (hour < 12) { result = '오전입니다!!'; }
+
         return `${hour}시는 ${result}`;
+      }
 
-        }
-        document.write( showAMPM(' 09:49:55'));
-
-      document.write(showAMPM(' 16:49:55'));
+      document.write(showAMPM('09:49:55'), '<br>');
+      document.write(showAMPM('16:31:21'), '<br>');
 
       /*  //오전 오후 구분하여 출력4
       time = `15:47:40`;
@@ -118,30 +119,29 @@
       }
       document.write(hour, result);*/
     </script>
-
+      <p>학점</p>
     <script>
       //국어 영어 수학을 입력하면 학점을 출력하는 함수 ;computeSungJuk
 
-      function computeSungJuk(kor,eng,mat){
-        let tot =0; //let tot =0,avg =0, grd=`가`;다중변수 선언
-        let avg =0;
-        let grd =`가`; //
+      function computeSungJuk(kor, eng, mat) {
+        let tot = 0, avg = 0, grd = '가';  // 다중변수 선언
 
-        tot =kor +eng+ mat;
-        avg =tot/3;
-
-        switch (parseInt(avg/10)){
+        tot = kor + eng + mat;
+        avg = tot / 3;
+        switch (parseInt(avg / 10)) {
           case 10:
-          case 9:result='수';break;
-          case 8:result='우';break;
-          case 7:result='미';break;
-          case 6:result='양';break;
-
+          case 9: grd = '수'; break;
+          case 8: grd = '우'; break;
+          case 7: grd = '미'; break;
+          case 6: grd = '양'; break;
         }
-        document.write(`총점은 ${tot},평균은 ${avg} 학점은 ${grd}입니다`);
+
+        document.write(`총점은 ${tot}, 평균은 ${avg}
+                    학점은 ${grd}입니다 <br>`);
       }
 
-      computeSungJuk(99,98,98);//학점이 가라고 출력된다 체-
+      computeSungJuk(99,98,99);
+      computeSungJuk(33,44,55);
 
 
     </script>

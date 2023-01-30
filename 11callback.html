@@ -58,18 +58,18 @@
   <script>
     //현재 날쨔와시간을 출력하는 함수
     //2023-01-27 13:15:30
-    let showDateTime = () =>{
+    let showDateTime = () => {
       let today = new Date();
 
-      let datetime = today.getFullYear() +'-';
-      datetime  += today.getMonth() +1  + '-';
-      datetime += today.getDate() + '-';
+      let datetime = today.getFullYear() + '-';
+      datetime += today.getMonth() + 1 + '-';
+      datetime += today.getDate() + ' ';
       datetime += today.getHours() + ':';
-      datetime  += today.getMinutes()  + ':';
-      datetime += today.getSeconds() ;
+      datetime += today.getMinutes() + ':';
+      datetime += today.getSeconds();
 
-      document.write((datetime));//console.log(datetime);
-    }; //  //
+      console.log(datetime);
+    };
     /*
       let result =`오후입니다`;
       hour = time[0] + time[1];

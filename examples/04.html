@@ -55,22 +55,28 @@
       //가 미혼인 경우 :연봉 30000미만 -10%, 연봉 3000이상 -25%
       //나 결혼인경우 :연봉 6000미만-15%, 연봉 6000이상 -35%
 
-      let yearmoney = prompt('연봉을 입력하세요');
-      let ismarried = prompt(' 결혼하셧나요?');
+      let salary = 3500;
+      let ismarried = 'y';//
+      let tax =0;
 
-      if (ismarried == false) {
-        document.write(${yearmoney*1.1});
-
+     /* if (ismarried == 'no') {
+        if (salary<3000){
+          tax = salary* (10/100);
+        }
       } else {
-        document.write(${yearmoney*1.25})
-      } if (ismarried ==true) {
-        document.write(`${yearmoney * 1.15}`);
+        tax= salary*(25/100);
+      } else
+      if (salary<6000) {
+        tax= salary*(15/100);
       }else {
-        document.write(`${yearmoney*1.35}`);
-      }
+        tax=salary*(35/100);
+      }*/
+      let result =computeTax(ismarried,salary);
+      document.write(result,`<br>`);
     </script>
 
     <script>
+      //스무고개
       //30.다음조건에 따라 숫자 맞추기 프로그램을 작성하라(CatchNumber)
       //가사용자로부터 1 -100사이의 숫자를 입력 받으세요(num1)
       //나 변수에 임의의 숫자 3자리를 초기화 합니다(num2)
@@ -78,20 +84,27 @@
       //라 num1이 num2보다 작으면 "추측한 숫자가 작습니다"라고출력
       //마 num1이 num2가 같으면 빙고 숫자를 맡췄습니다라고 출력
 
-      let num1 = prompt("1~100사이의 숫자를 입력하세요");
-      let num2 = 456;
+      //let num1 =0;
+      let num2 = 579; // 시스템 임의 생성
+      //result ='';
 
-      if (num1 > num2) {
-        document.write("추측한 숫자가 큽니다, <br>");
-      }
-      if (num1 < num2) {
-        document.write("추측한 숫자가 작습니다, <br>");
-      }
-      if (num1 == num2) {
-        document.write("빙고 숫자를 맡췃습니다 <br>");
-      }
 
-      document.write();
+    /*  while(true) {
+        num1 = parseInt(prompt(`임의 숙자 3자리는?`));
+        if (num1 > num2) {
+          result = '추측한 숫작 커요';
+        }else if (num1<num2) {
+            result =`추측한 숫자가 작아요`;
+          }else {
+         document.write(`빙고`);
+          break;
+        }
+        console.log(result);
+      }*/
+
+      catchNumber(num2);
+
+
     </script>
     <script>
       //32.키보드로 정수를 하나 입력받아 다음 조건에따라 결과를 출력하는 프로그램을 작성하라
@@ -100,30 +113,60 @@
       // 나 입력한 값이 10000 이상 20000미만 이면 "1000~20000"이라 출력
       //다 입력한 값이 20000 이상 30000미만 이면 "20000~30000"이라 출력
       //라.입력한 값이 그 이외 값이면 범위밖 값이라 출력
+/*
+      let nums = prompt("정수를 입력하세요");
+       result ='범위박 값';//한번만 싷행 할거라 리절트 값 넣는다
 
-      let CheckNumber = prompt("정수를 입력하세요");
+      if (nums < 10000) {
+        result ="10000 미만";
+      }
+      if ( nums >=10000 && nums < 20000) {
+        result =`10000~20000입니다 <br>`;
+      }
+      if ( nums >= 20000 && num< 30000) {
+        result =`20000~30000입니다` ;
+      }*/ //else 쓰나 확인
 
-      if (CheckNumber < 10000) {
-        document.write("10000 미만");
-      }
-      if (10000 <= CheckNumber < 20000) {
-        document.write("10000~20000입니다 <br>");
-      }
-      if (20000 <= CheckNumber < 30000) {
-        document.write("20000~30000입니다 <br>");
-      }
+      result = checkNumber();
+      document.write(result,`<br>`);
+
+
     </script>
     <script>
       //33.임의의 숫자 6자리를 입력하면 신용카드의 종류와 은행정보를 출력하는
-      //프로그램을 작성해보세요 (CardCheck)
+      //프로그램을 작성해보세요 (CardCheck)  ////
+      let cardnum = '404825';
+      result =CardCheck(cardnum);
+      document.write(result,'<br>');
+     /* result = '잘못된 카드번호입니다!!';
+      let cdnum = cardnum[1] + cardnum[2]
+              + cardnum[3] + cardnum[4] + cardnum[5];
 
-      let nums2 = 123456;
-      let card = ``;
-      let bankinfo = ``;
+      if (cardnum[0] == '4') {
+        result = 'visa - ';
+        if (cdnum == '04825') result += '비씨카드';
+        else if (cdnum == '38676') result += '신한카드';
+        else if (cdnum == '57973') result += '국민은행';
 
-      if (nums2 == 123456) {
-        document.write(`당신의 카드는${card}이고 은행은${bankinfo}입니다 <br>`);
-      }
+      } else if (cardnum[0] == '5') {
+        result = '마스터카드 - ';
+        switch (cdnum) {
+          case '15594': result += '신한카드'; break;
+          case '24353': result += '외환카드'; break;
+          case '40926': result += '국민은행'; break;
+        }
+      } else if (cardnum[0] == '3' && cardnum[1] == '5') {
+        cdnum = cardnum[2] + cardnum[3]
+                + cardnum[4] + cardnum[5];
+        result = 'JCB카드 - ';
+        switch (cdnum) {
+          case '6317': result += 'NH농협카드'; break;
+          case '6901': result += '신한카드'; break;
+          case '6912': result += 'KB국민카드'; break;
+        }
+      }*/
+
+      document.write(result, '<br>');
     </script>
     <script>
       //35 (JCB카드)
@@ -135,17 +178,142 @@
     </script>
 
     <script>
-      //48. 지금 현재 수지의 통장잔액이 25,000원이다 은행이자가 연6%라고 가정할때 몇년이 지나야 통장잔액이 지금의
-      //2배를 넘는지 알아보는 프로그램을 아래 그림을 참고하여 작성하여라.(ComputeInvestment)
-      //원금25,000원에 연6%를 적용하면 12년뒤에야 2배 수익이 납니다.
-      let accmoney = `25,000`;
-      let inrate = `6%`;
-      let result = `12년 뒤에 2배 수익이납니다<br>`;
-      for (let i = 12; i <= 12; ++i) {
-        document.write(result);
-      }
+
     </script>
 
-    <script></script>
+    <script>
+      //35시간때를 의미하는 영어단어를 변수 daytime으로 입력하면 그에.다른 ㅇ의미르 출력하는 프로그램을 작성하라
+      let daytime ='';//daybrek를 넣어서
+      result =checkDayTime(daytime);
+      document.write(result,`<br>`);
+      /*result ='';
+
+      switch (daytime) {
+        case `morning hours`:result =`아침시간(7-12)`;break;
+        case `midday`:case'noon':result=`점심시간(12-1)`;break;
+        case `afternoon hours`:result =`오후시간(6-9)`;break;
+        case `night hours`:result =`아침시간(7-12)`;break;
+        case `midnight hours`:result =`아침시간(7-12)`;break;
+        case `elaryl morning hours`:result =`아침시간(7-12)`;break;
+        case `sall hours`:result =`새벽(1-3)`;break;
+        case `dawn:case`daybrek`:result =`해뜰녁(5-12)`;break;
+        default:result=`잘못입력하였습니다`
+
+      }*/
+      //document.write(result);
+    </script>
+  <script>
+    //48. 지금 현재 수지의 통장잔액이 25,000원이다 은행이자가 연6%라고 가정할때 몇년이 지나야 통장잔액이 지금의
+    //2배를 넘는지 알아보는 프로그램을 아래 그림을 참고하여 작성하여라.(ComputeInvestment)
+    //원금25,000원에 연6%를 적용하면 12년뒤에야 2배 수익이 납니다.
+
+    //48수지의 통장잔액
+    let account = 25000;
+    let interest =6;
+    result = computeInvestment(account,interest);
+    document.write(result,`<br>`);
+   /* let sum =account;
+    let year =0;
+    while (true){
+      if ( sum>account*2 ) break;
+      sum += sum*(interest/100);
+
+      ++year
+      console.log(year,'/',sum);
+    }
+    document.write(year,'/',parseInt(sum));*/
+  </script>
+
+  <script>
+    //51구구단 출력프로그램-1 // \n넣어도 된다
+    result =`<pre>
+    Multipilcation Table
+        1    2    3    4    5    6    7    8    9
+--------------------------------------------------
+1 |     1    2    3    4    5    6    7    8    9
+2 |     2    4    6    8   10    12   14   16   18
+3 |     3    6    9   12   15    18   21   24   27
+4 |     4    8    12   16   20    24   28   32   36
+5 |     5    10   15   20   25    24   35   40   35
+6 |     6    12   18    24   30    36   42   48   54
+7 |     7    14   21    28   35    42   49   56   63
+8 |     8    16   24    32   40    48   56   64   72
+9 |     9    18   27    36   45    54   63   72   81\n
+   </pre>`;
+    document.write(result)
+  </script>
+  <script>
+    // # 51 v2
+    result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiplication  Table <br>'
+    result += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;9 <br>';
+    result += '------------------------------------------------ <br>';
+
+    for (let i = 1; i <= 9; ++i) {
+      result += `${i}&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+                ${i * 1}&nbsp;&nbsp;&nbsp;&nbsp;${i * 2}&nbsp;&nbsp;&nbsp;&nbsp;
+                ${i * 3}&nbsp;&nbsp;&nbsp;&nbsp;${i * 4}&nbsp;&nbsp;&nbsp;&nbsp;
+                ${i * 5}&nbsp;&nbsp;&nbsp;&nbsp;${i * 6}&nbsp;&nbsp;&nbsp;&nbsp;
+                ${i * 7}&nbsp;&nbsp;&nbsp;&nbsp;${i * 8}&nbsp;&nbsp;&nbsp;&nbsp;
+                        ${i * 9} <br>`;
+    }
+
+    document.write(result);
+  </script>
+  <script>
+    //51-3
+
+    result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Multiplication  Table <br>'
+    result += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;7&nbsp;&nbsp;&nbsp;&nbsp;8&nbsp;&nbsp;&nbsp;&nbsp;9 <br>';
+    result += '------------------------------------------------ <br>';
+    for (let i =1; i<=9;++i){
+      result +=`${i}|  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp`;
+
+      for (let j=1; j<=9; ++j){
+    result +=`${ i *j }&nbsp;&nbsp;&nbsp;&nbsp;`;
+      }
+      result +='<br>';
+    }
+    document.write(result);//
+  </script>
+
+  <script>
+    //51-4 12행 11열 테이블 작성해보기
+  </script>
+  <script>
+    //53달력
+    //달력 만들기 공식((년도 - 1)*365 + (년도 - 1)/4 -(년도 - 1)/100 + (년도 - 1)/400 + 1) % 7
+    //덧)zeller공식을 이용하면 특정날짜의 요일을 알수 있음
+    //0 -일요일 1-월 ,  6-토요일
+    //윤년이면
+    let year =2021-1;//매년 -1을 해야하는가?
+    let day =parseInt(((year )*365 + (year )/4 -(year )/100 + (year )/400 + 1) % 7);//원래는 year-1값이었는데 -1을 위에다
+    //넣어주면서 year 만씀
+
+    //평년:365
+    //윤년:365일 따라서 전년도가 윤년이었다면 day에 한번더 +1해야함
+    if (year %4 ==0&& year%100 !=0 || year %400 ==0) ++day;//day+1이랑 같은의미이다
+
+    result =`<b>January${year}</b><br>`;
+    result += `--------------------------------------------------<br>`;
+    result +=`sun&nbsp;&nbsp;&nbsp;Mon&nbsp;&nbsp;&nbsp;
+              Tue&nbsp;&nbsp;&nbsp;Wed &nbsp;&nbsp;&nbsp;
+              thu&nbsp;&nbsp;&nbsp;fri &nbsp;&nbsp;&nbsp;sat<br>`;
+    //계산한 요일 만큼 공백 출력
+    for (let i =0;i<=day; ++i){
+      result += `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+    }
+      // result +='<br>';
+   //전단계에서 출력한 요일을 포함해서 다음요일 출력
+    for (let i =1 +day; i <= 31 +day; ++i){
+      result += `&nbsp;&nbsp;&nbsp;${i-day}&nbsp;&nbsp;&nbsp;`;
+      if (i % 7 ==0) {
+        result +=`<br>`;
+
+      }
+    }
+    document.write(result,'<br>');
+    document.write(`요일숫자:`,day,'<br>'); // //
+
+  </script>
   </body>
 </html>
