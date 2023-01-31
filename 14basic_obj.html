@@ -1,10 +1,124 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>자바</title>
-</head>
-<body>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 내장함수</title>
+  </head>
+  <body>
+    <h1>자바스크립트 내장함수</h1>
+    <p>개요</p>
+  <p>자바스크립트에서 기본적으로 제공하는 객체애 포함된 여러가지 함수를 알아봄
+  자바스크립트의 내장객체에는 크게 3가지로 분류 :Native,Host,사용자정의 객체</p>
 
-</body>
+  <h2>Native객체</h2>
+  <p>EMCAScript 규격에 따라 정이된 객체
+  Object,string,Number, Function,Array,Date,Math,RegExp등이 제공됨
+  이러한 객체들은 전역 객체 global object라고 부름</p>
+
+  <h2>Function</h2>
+  <p>함수 정의시 사용
+  </p>
+
+  <script>
+      let add = new Function('a','b',`return a+b`);
+      document.write(add(10,5),'<br>');
+  </script>
+
+  <h2>String</h2>
+  <p>문자열을 효율적으로 다룰수 있게 해줌</p>
+  <p>string 객체는 기본적으로 불변 immutable객체(변경불가)임</p>
+  <p>문자열은 기본적으로 문자열 상수풀 pool을 이용해서 관리함</p>
+
+  <script>
+      let str1 = `hello,world`;
+      let str2 = `hello,world`;
+      let str3 = new String(`hello,world`);
+
+      document.write(str1 ==str2,'<br>');//값 비교 트루로 출력
+      document.write(str1 ==str3,'<br>');//
+      document.write(str1 === str2,'<br>');//값,자료형유형비교
+      document.write(str1 === str3,'<br>');//폴스로 출력
+
+      //str1과 str2의 메모리번지는 동일 :문자열 상수풀때문임
+      //strl1과 str3는 메모리번지가 서로 다름
+
+      document.write(str1[0],str1[7],'<br>');
+      //문자열은 문자들로 구성된 배열- 부분적인 slice기능 제공
+
+      str1[0]='H';
+      document.write(str1[0],'<br>');
+      //문자열은 불변객체이므로 개별문자 수정 불가!
+
+      str4 =['h','e','l','l','o'];
+      str4[0] ='H';
+      document.write(str4);
+  </script>
+
+  <script>
+      //length:문자열 길이 반환
+      document.write(str1.length,'<br>');
+
+      //at:지정한 위치의 문자 추출
+      //charAt
+      document.write(str1.at(0),'<br>');
+      document.write(str1.charAt(0),'<br>');
+
+      //indexof(찾는문자열):특정문자열의 존재여부 확인
+      document.write(str1.indexOf('world'),'<br>');
+      document.write(str1.indexOf('sayhello'),'<br>');
+
+      //lastIndexof(찾는문자열);:특정문자열의 존재여부 확인 뒤에서부터 찾는다
+      str5 = `hello,hello,hello,world`;
+      document.write(str5.indexOf('hello'),'<br>');
+      document.write(str5.lastindexOf('hello'),'<br>');
+
+      //slice(시작,끝+1);지정한 범위내 문자 추출
+      //ex) strl에서 world추출
+      document.write(str1.slice(7,12),'<br>');
+
+      //ex) str5에서 world추출
+      //긑을 생략하면 자동으로 나머지 문자 추출
+      document.write(str5.slice(19,24),'<br>');
+      document.write(str5.slice(19),'<br>');//끝은 생략가능
+  </script>
+
+  <script>
+      //카드번호 식별하기 2번
+
+     let CardCheck2 =(cardnum) => {
+
+      let result = '잘못된 카드번호입니다!!';
+
+       let cdnum = cardnum.slice(1); //2번부터 나머지문자 추출+
+       if (cardnum[0] == '4') {
+         result = 'visa - ';
+         if (cdnum == '04825') result += '비씨카드';
+         else if (cdnum == '38676') result += '신한카드';
+         else if (cdnum == '57973') result += '국민은행';//
+
+       } else if (cardnum[0] == '5') {
+         result = '마스터카드 - ';
+         switch (cdnum) {
+           case '15594': result += '신한카드'; break;
+           case '24353': result += '외환카드'; break;
+           case '40926': result += '국민은행'; break;//체크
+         }
+       } else if (cardnum.slice(0,2)== '35' ) {
+         cdnum = cardnum.slice(2);
+         result = 'JCB카드 - ';
+         switch (cdnum) {
+           case '6317': result += 'NH농협카드'; break;
+           case '6901': result += '신한카드'; break;
+           case '6912': result += 'KB국민카드'; break;
+         }
+       }
+       return result;
+     };
+      document.write(CardCheck2('351234'),'<br>');
+
+      document.write(CardCheck2('457943'),'<br>');
+
+  </script>
+  </body>
 </html>
+
