@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>자바스크립트 json</title>
+  </head>
+  <body>
+    <h1>JSON</h1>
+    <p>javascript Object Notation 의 약자</p>
+    <p>
+      데이터를 저장하거나 다른 시스템으로 전송시 많이 사용하는 데이터 교환 형식
+      즉 시스템에 생성된 객체를 문자열 형태로 변환해서 네트워크를 통해
+      다른곳으로 전송할때 자주 사용하는 데이터 형식을 의미(직열화)
+    </p>
+    <p>
+      이때 전환된 문자열에는 원하는 정보가 있는 객체의 속성을 그대로 포함되어야
+      함
+    </p>
+    <p>
+      이전에 사용했던 데이터 교환형식인 xML에 비해 적은 코드로 데이터를 정의
+      할수 있음
+    </p>
+
+    <script>
+      //아이디 비밀번호로 구성된user객체 정의 1 -csv
+      //userid,passwd
+      //abc123,987xyz
+      //추가적인 직렬화 /역직렬등의 추가 작업 필요!
+    </script>
+    <script>
+      //아이디 비밀번호로 구성된user객체 정의 2- XML (마크업언어이다)
+      //<user>
+      //<userid>abc123</useid>
+      //<passwd>987xyz</passwd>
+      //</user>
+
+      //csv에 비해 직렬화 역직렬화는 편하지만 데이터 정의시
+      //쓸데없는 코드가 많이 필요하다
+    </script>
+    <script>
+      //아이디 비밀번호로 구성된user객체 정의 3-json
+      let user = {
+        userid: "abc123",
+        passwd: "987xyz",
+      }; //제이슨과 오브잭(12번오브잭과비교)의 차이는 키를 정의할때 따옴표를 쓴다
+      //csv,xml에 비해 직렬화 역직화 편하고 슬데없는 코드도 많이 안씀
+      //자바스크립트에는 제이슨이 물과 같은 존재이다실재 데이터를 주고 받을때 이렇게 쓴다
+    </script>
+
+    <h2>json직렬화 역직렬화</h2>
+    <p>
+      stringify:직렬화이다 객체를 문자열로 변환하는 함수 데이터를 서버로 전송
+      또는 객체출력시 사용
+    </p>
+    <p>
+      parse;역직렬화 문자열을 객체로 변환하는 함수서버로부터 받은 데이터를
+      클라이언트에서 작없시 사용
+    </p>
+
+    <script>
+      //위에 만든user객체출력하기1
+      document.write(user, "<br>");
+      //위에 만든user객체출력하기2 -toString
+      let user2 = {
+        userid: "abc123",
+        passwd: "987xyz",
+        toString() {
+          return `${this.userid} ${this.passwd}`;
+        },
+      };
+      document.write(user2, "<br>");
+      //객체의 내용을 출력하기 위해 toString함수 추가 하지만 객체의 속성이 추가되면toString함수 수정 필요
+      //위에 만든user객체출력하기3 -stringfy 개체내부를 볼수 있다
+      document.write(JSON.stringify(user), "<br>");
+      //stringfy 함수만으로 객체내용출력
+
+      let json = JSON.stringify(user);
+      document.write(json, "<br>"); //위에거를 같게 쓴거임
+    </script>
+    <script>
+      user = '{"userid":"abc123","passwd":"987xyz"}';//한개데이터는 이렇게 써도 되지만 여러게는 배열로 아래거랑 비교하면서보자
+      let obj = JSON.parse(user);
+
+      document.write(obj.userid, "<br>");
+      document.write(obj.passwd, "<br>");
+    </script>
+
+    <script>
+      let sjs = `[{ "name": "혜교", "grd": "수" },
+                  { "name": "지현", "grd": "미" },
+                  { "name": "수지", "grd": "가" }]`;
+      obj=JSON.parse(sjs);
+
+      document.write(obj,'<br>');
+      //배열객체를 구성하는 개별요소에 접근하려면
+      //객체명[인덱스].속성명 형식으로 사용해야 함
+      document.write(obj[0].name,obj[0].grd,'<br>');
+      document.write(obj[2].name,obj[2].grd,'<br>');
+
+    </script>
+    <script>
+      //다음 배열에서 abc123이 존재하는 지 확인
+      users =['abc456','abc789','xyz123','abc123','xyz789'];
+     /* if (users[0] =='abc123')document.write('1-yes');
+      if (users[1] =='abc123')document.write('2-yes');
+      if (users[2] =='abc123')document.write('3-yes');
+      if (users[3] =='abc123')document.write('4-yes');
+      if (users[4] =='abc123')document.write('5-yes');
+      */
+      for(let i=0; i <=4;++i)
+        if(users[i]=='abc123')document.write(`${i+1}-yes`);
+    </script>
+
+  <script>
+    //지현 학생의 성적 출력한다면 ?1
+   /*
+    if (obj[0].name =='지현') document.write(obj[0].grd);
+    if (obj[1.name =='지현') document.write(obj[1].grd);
+    if (obj[2].name =='지현') document.write(obj[2].grd);*/
+      let sj =null;
+    for(let i= 0;i <obj.length; ++i){
+      if(obj[i].name =='지현') {
+       sj =obj[i];
+        break;
+      }
+      } //자바는 요런식으로 짠다
+    document.write('지현:', sj.grd,'<br>');//반복문 밖에서 처리하는 게 확장성에서좋다
+
+  </script>
+  <script>
+    //지현 학생의 성적 출력한다면 ?2
+    //필터함수고  탐색시 대상객체의 자료형은 객체여햐 함
+    let sjs = `{"sjs":[{ "name": "혜교", "grd": "수" },
+                  { "name": "지현", "grd": "미" },
+                  { "name": "수지", "grd": "가" }]}`;//sjs는 속성이다 obj의
+
+    obj =JSON.parse(sjs);
+    //fillter:대상 객체의 요소를 순회해 가면서
+    //콜백함수에 매개변수로 넘겨서 처리하는 함수, 결과는 배열형태로 넘겨 받음
+    //filter,map,reduce;고차함수
+    sj =  obj.sjs.filter(function (s){ //필터함수로 하면 자동적으로 배열로 저장된 결과가 한개든 여러개든
+      if (s.name =='지현') return s; //콜백함수는 자동으로 넘겨준다 매개변수
+    });                               //필터함수는 {로시작
+    //sj =  obj.sjs.filter(s=>(s.name =='지현'));//필터함수는 {로시작//위에 거를 한줄로 쓸수있다//앞으로 이거로 짜면 좋다
+    document.write('지현:', sj[0].grd,'<br>');
+
+  </script>
+
+
+  </body>
+</html>
