@@ -36,7 +36,7 @@
 
       //함수호출:함수명
       sayHello2(`Java`);
-      sayHello2(`html`);
+      sayHello2(' ');
       sayHello2(`css`);
     </script>
     <script>
@@ -59,8 +59,7 @@
           let result = '평년입니다';
 
           if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
-            result = `윤년입니다<br>`;
-          }
+            result = `윤년입니다<br>`;}
           return `${year}년은 ${result}`;
         }
 

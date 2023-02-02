@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 브라우져 객체</title>
+</head>
+<body>
+<h1>자바스크립트 브라우져 객체</h1>
+p>웹브라우져의 여러 구성요소들을 객체형태로 구현해서
+자바스크립트로 제어할 수 있도록 만들어 놓은 것</p>
+<p>BOM은 W3C의 표준모델은 아님</p>
+<p>따라서, 브라우저 제조사마다 구현방식이 달라
+  특정부분은 서로 호환되지 않는 것도 존재</p>
+
+<h2>window객체</h2>
+<p>웹브라우저의 창을 의미하는 객체</p>
+<p>innerHeight, innerWidth :
+  브라우져의 뷰포트 크기를 의미하는 속성</p>
+<script>
+  //confirm:예 아니오를 선택해서 결과 출력
+  //alert:경고창
+  //prompt :윈도우화면에
+  let yesno =window.confirm(`자바스크립트 좋아하나요?`);
+
+ // if (yseno ==true)
+  if (yesno)
+    document.write(`정말요?`,'<br>');
+</script>
+
+<script>
+
+  //window.innerWidth :창 테두리 제외 뷰포트
+  //document.documentElement.clientWidth:
+  //innerWidth에서 스크롤바 제외 뷰포트 크기
+  //document.body.clientWidth
+
+  let iw = window.innerWidth ||
+          document.documentElement.clientWidth
+
+  let ih = window.innerHeight ||
+          document.documentElement.clientWidth
+  document.write('뷰포트 크기',iw,'/',ih,'<br>');
+
+</script>
+<h2>문서 열기 닫기</h2>
+
+<p>window객체의 open함수를 이용해서 지정한 문서를
+  새창이나 새로운 탭에 띄울수 있음</p>
+<p>또한, window객체의 close함수를 이용하면
+  띄워진 창이나 탭을 닫을 수 있음</p>
+<p>창 생성시 창에 관한 속성(크기,너비등)을 설정하면
+  탭으로 생성되지 않고 독립적인 창으로 생성됨</p>
+<p>주 브라우저의 url과 새 창의 url이 동일하지 않을 경우
+  CSRF 와 CORS 보안 위배 발생 가능성이 존재!
+  (동일 출처 위반)</p>
+<div>
+<button type ='button' onclick="makeWin()">새창띄우기</button>
+<button type ='button' onclick="rmvWin()">띄운 창 닫기</button>
+</div>
+
+<script>
+  let mywin =null;//어떤 창이열릴줄모르므로 널로 잡아놓고
+  let makeWin =() =>{
+    //window.open(문서이름);
+   //
+    // mywin = window.open('01hellojs.html');
+    mywin =window.open(`https://google.co.kr`);
+  };
+  let rmvWin =() =>{
+    mywin.close();
+
+  };
+</script>
+
+<h2>창조작
+</h2>
+
+<p>resizeTo;생성한 창 크기 변경</p>
+<p>moveTo:창위치 변경</p>
+
+<div>
+  <button type ='button' onclick="makeWin2()">새창띄우기</button>
+  <button type ='button' onclick="movWin()">창 이동</button>
+  <button type ='button' onclick="rszWin()">창크기바꾸기</button>
+</div>
+<script>
+
+  //window.open(문서명,null,이름,너비 ,높이,옵션)
+  //moveTo(x좌표,y좌표)
+  //rszWinTo(너비,높이)
+  mywin =null;
+  let makeWin2 =() =>{
+    mywin=window.open(`about:blank`,null,'popup,width=300,height=300')//about:blank라고 하면 빈창이뜬다네이버나 다른 주소창스면 그창이뜬다
+  };                  //출
+  let movWin =() => {
+    mywin.moveTo(500,500);};
+  let rszWin =() => { mywin.resizeTo(700,100);};
+
+</script>
+
+<h2>랜덤창 띄우기</h2>
+
+<div>
+  <button type ='button' onclick="startRndWin()">랜덤창 시작</button>
+  <button type ='button' onclick="stopRndWin()">랜덤창 창 중단</button>
+
+</div>
+
+<script>
+  let intv =null;
+  //
+  let  moveWin = () => {
+    let x= Math.floor(Math.random()*1920);
+    let y=Math.floor(Math.random()*1080);
+    mywin.moveTo(x,y);
+  };
+  //창크기 변경함수
+  let resizeWin =() => {
+    let w= Math.floor(Math.random()*300);
+    let h= Math.floor(Math.random()*300);
+    mywin.resizeTo(w,h);
+  };
+  //새창을 하나 띄운뒤, 임의의 위치로 창을 옴기고
+  //임의의 수치로 창 크기를 변경하는 함수
+  let startRndWin =() => {
+    makeWin2();//새창 띄우기
+   intv =  setInterval(()=>{moveWin();resizeWin(); },500); // 실행할 함수를 두개 실행하고 0.5초마다 실행한다0.5초는500 1초는1000
+            //움직이는함수 창사이즈 줄이는 함수를 반복적으로 싷행하게만들고 intv는 인터벌
+
+  };
+  let stopRndWin =() => {
+    clearInterval(intv);
+    mywin.close(); //랜덤창 중지
+  };
+
+
+</script>
+<h2>screen
+</h2>
+<p>사용자 디스플레이에 관한 정보를 다루는 객체</p>
+
+<p>width, height : 사용자 디스플레이의 실제 해상도 크기</p>
+<p>availWidth, availHeight : 사용자 디스플레이의 실제 해상도 중
+  사용자가 사용가능한 화면영역</p>
+
+<script>
+  document.write(screen.width,'/',screen.height,'<br>');
+  document.write(screen.availWidth,'/',screen.availHeight,'<br>');
+</script>
+
+<h2>화면 정중앙에 새창띄우기</h2>
+<div>
+<button type ='button' onclick="centerWin()">정중앙에 창띄우기 시작</button>
+</div>
+
+<script>
+  //창크기;300x300
+  let centerWin =() => {
+
+  let sx =screen.width;
+  let sy =screen.height;
+
+  let cx=(sx/2)-(300/2);
+  let cy=(sy/2)-(300/2);
+    makeWin2();
+
+    mywin.moveTo(cx,cy);
+  };
+</script>
+
+<h2>location</h2>
+<p>현재 브라우져에 표시된 문서의 url을 변경하거나 url에 대한 정보를 얻을수 잇음</p>
+
+<script>
+  let url =location.href;
+  document.write(url,'<br>');
+  document.write(location.hostname,'<br>');//서버명이다 호스트이름은
+  document.write(location.pathname,'<br>');//경로명
+  document.write(location.search,'<br>');//질의문자열
+
+</script>
+
+<div>
+  <button type ='button' onclick="go2gle()">구글로 이동</button>
+
+  <button type ="button" onclick="go2any()">오늘의 추천사이트</button>
+
+</div>
+<script>
+  let go2gle = () =>{
+    ;location.href =`http://google.co.kr`;
+  };
+  let go2any = () =>{
+    const luckys =['naver.com','daum.net','danawa.co.kr','ppomppu.co.kr','auction.co.kr'];
+    let idx= Math.floor(Math.random()*5);
+    location.href ='http://' + luckys[idx]; //앞에 http를 지정해주면 더 안전하게 쓸수 있고 안써도 된다
+//이미지나 이런건 난수함수이용해서 띄울수 있다
+  };
+</script>
+<h2>navigator</h2>
+<p>접속중인 클라이언트의 다양한 정보를 알아낼수 있음</p>
+<script>
+  let appname =navigator.appName;
+  let codename =navigator.appCodeName;
+  let appver =navigator.appVersion;
+  let ua =navigator.userAgent;//추천
+  let pf =navigator.platform;
+
+  document.write(appname,'<br>');
+  document.write(codename,'<br>');
+  document.write(appver,'<br>');
+  document.write(ua,'<br>');
+  document.write(pf,'<br>');
+
+</script>
+
+</body>
+</html>
