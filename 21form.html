@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>자바스크립트 DOM form</title>
+  <style>
+    .warn { color: red; font-style: italic }
+  </style>
+</head>
+<body>
+<h1>자바스크립트 DOM form</h1>
+<p>form 다루기 -button</p>
+<p>폼의 각요소를 다룰때 querySelector나 getElementById대신 폼이름.name속성으로도 가능
+  폼에 입력한 값들을 서버로 전송하려면 버튼 객체의 submit함수 호출 </p>
+<p>MIME:클라이언트의 다양한 요청의 종류를 정의 한것:메세지타입/서브타입
+웹서버는 일반적으로 텍스트형식의 파일(text/plain)만 다룰수 있음
+ 하지만 이진파일(application/octet-stream)이나 JSP/php등의 파일등은 서버가 다룰수 없기 때문에
+  그것을 처리할수있는 추가적인  프로그램을 따로 설처해둬야</p>
+
+<div>
+  <form name="join1" action="server/21join.jsp">
+      <div>아이디(uid)
+        <input type="text" name="uid"></div>
+      <div id="warn1" class="warn"></div>
+
+      <div>비밀번호(pwd)
+        <input type="password" name="pwd"></div>
+
+
+      <div>비밀번호확인(pwd)
+        <input type="password" name="repwd"></div>
+      <div id="warn2" class="warn"></div>
+
+      <div>이름(name)
+        <input type="text" name="name"></div>
+      <div id="warn3" class="warn"></div>
+
+      <div>성별(gender)
+        남<input type="radio" name="gender" value="m">
+        여<input type="radio" name="gender" value="f">
+      </div>
+      <div id="warn4" class="warn"></div>
+
+      <button type="button" id="joinbtn">입력완료</button>
+  </form>
+</div>
+<script>
+  //특정품 지정 : document.폼이름
+  let frm1 = document.join1;
+
+  let warn1 = document.querySelector('#warn1');
+
+  let joinbtn = document.querySelector('#joinbtn');
+
+  joinbtn.addEventListener('click',()=>{
+
+    warn1.textContent = '';
+    warn2.textContent = '';
+    warn3.textContent = '';
+    warn4.textContent = '';
+
+    if (frm1.uid.value == '')
+      warn1.textContent ='아이디 입력';
+    else if (frm1.pwd.value == '')
+      warn2.textContent ='비밀번호 입력';
+    else if (frm1.repwd.value == '')
+      warn2.textContent ='비밀번호확인 입력';
+    else if (frm1.name.value == '')
+      warn3.textContent ='이름을  입력';
+    else if (frm1.gender.value == '')
+      warn4.textContent ='성별을 입력하세요';
+    else if (frm1.repwd.value !=frm1.pwd.value)
+      warn4.textContent ='비밀번호가 일치하지 않습니다';
+    else{
+      frm1.method ='post';
+    frm1.action=`server/21join.jsp`;
+      frm1.submit();//작성한 폼데이터를  서버로 요청 GET과 POST는 네트워크의 전송 방식이다. GET은 어떠한 데이터를 전달해주는 방식이라면, POST는 데이터의 값을 변경하는 방식이다.
+
+
+    }
+  });
+
+  //
+
+
+
+
+
+</script>
+
+
+
+
+
+<p>for 다루기 -submit</p>
+<p>submit버튼에 대한 이벤트 처리는 1.form태그에 onsubmit속성 정의하고
+        2.return폼테크 함수 명 의로 이벤트핸들러 등록함
+3.폼테크가 하나라도 실패하면 return false로 성공하면
+return true로 submit이작솓하도록함</p>
+<p>즉 이벤트를 중지하려면 return false, event.preventDefault(),
+        등의 코드 사용</p>
+// action="server/21join.jsp">
+
+<div>
+    <form name="join2" onsubmit="return checkfrm2()">
+        <div>아이디(uid)
+            <input type="text" name="uid"></div>
+        <div id="warn5" class="warn"></div>
+
+        <div>비밀번호(pwd)
+            <input type="password" name="pwd"></div>
+
+
+        <div>비밀번호확인(repwd)
+            <input type="password" name="repwd"></div>
+        <div id="warn6" class="warn"></div>
+
+        <div>이름(name)
+            <input type="text" name="name"></div>
+        <div id="warn7" class="warn"></div>
+
+        <div>성별(gender)
+            남<input type="radio" name="gender" value="m">
+            여<input type="radio" name="gender" value="f">
+        </div>
+        <div id="warn8" class="warn"></div>
+
+        <button type="submit" id="join2btn">입력완료</button>
+    </form>
+</div>
+
+<script>
+
+   let frm2 = document.join2;
+
+    let warn5 = document.querySelector('#warn5');
+    let checkfrm2=(e )=>{
+
+        warn5.textContent = '';
+        warn6.textContent = '';
+        warn7.textContent = '';
+        warn8.textContent = '';
+
+            if ( frm2 .uid.value == ''){
+             warn5.textContent = '아이디 입력';
+            return false;
+            }else if (frm2.pwd.value == '') {
+                warn6.textContent ='비밀번호 입력';
+               e.event.preventDefault();
+            }else if (frm2.repwd.value == '') {
+                warn6.textContent = '비밀번호확인 입력';
+                e.preventDefault();
+            }else if (frm2.name.value == '') {
+                warn7.textContent = '이름을  입력';
+                e.preventDefault();
+            }else if (frm2.gender.value == '') {
+                warn8.textContent = '성별을 입력하세요';
+                e.preventDefault();
+            }else if (frm2.repwd.value !=frm2.pwd.value) {
+                warn8.textContent = '비밀번호가 일치하지 않습니다';
+                e.preventDefault();
+            }else{
+            frm2 .method ='post';
+            frm2 .action=`server/21join.jsp`;
+                e.stopPropagation();//경고창이 한번만 보이게 하는것이다
+            alert("이글이 보이나요");
+            return true;
+            //frm2 .submit();//작성한 폼데이터를  서버로 요청
+
+        }
+    };
+
+    let join2btn = document.querySelector('#join2btn');
+
+    join2btn.addEventListener('click',(e)=>{
+        checkfrm2(e);
+    });
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
