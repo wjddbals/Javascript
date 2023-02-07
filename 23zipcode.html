@@ -128,7 +128,7 @@
     // ************ 여기 읍면동을 선택했을때 이벤트 처리//*************************
 
     dong.addEventListener('change', () => {
-        let msg ='${sido.value} ${gugun.value} ${dong.value}';
+        let msg=`${sido.value} ${gugun.value} ${dong.value}`;
         if (dong.value=='-읍/면/동-') return;
         alert(msg);
 
