@@ -87,7 +87,7 @@
       }
 
       let getSido = () =>{
-          let req=new XMLHttpRequest();
+        /*  let req=new XMLHttpRequest();
           req.onreadystatechange = () => {
               if(req.readyState==4&& req.status==200){
                   //console.log(req.responseText);
@@ -95,8 +95,11 @@
               }
           };
           req.open('get',url1);
-          req.send();
-
+          req.send();*/
+          //ajax promise인 fetch함수로 변경
+        fetch(url1)
+            .then(response =>response.text()) //if절이 위안으로 바꿈
+            .then(text=>setSido(text));
       };
 
 
@@ -166,9 +169,10 @@
       //여기 (동)에서 갖다놓고 쓰면된다
       const setDong = (dongs) => {
           let  cols=dongs.split(',');
-          while (dong.lastChild) {
-              dong.removeChild(dong.lastChild);
-          }
+
+          while (dong.lastChild)
+          {dong.removeChild(dong.lastChild);}
+
 
           makeopt(dong,'읍/면/동');
           for (let  col of cols){
@@ -183,7 +187,7 @@
 
       //*** dong이벤트처리
       dong.addEventListener('change',()=>{
-          let qry ='?dong='+ dong.value;
+          let qry ='?sido='+ sido.value + '&gugun='+gugun.value;
           //선택한시도가 '광역시라면' 함수 실행중지
           if(dong.selectedIndex==0) return;
 
@@ -196,7 +200,7 @@
 
               }
           };
-          req.open('get',url2+qry);
+          req.open('get',url3+qry);
           req.send();
       });
 
