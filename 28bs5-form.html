@@ -8,7 +8,195 @@
 </head>
 <body>
 <h1> 부트스트랩5 - 폼다루기</h1>
-<p></p>
+<h2></h2>
+<p>부트스트랩을 폼디자인하려면
+form-label, form-control, form-check-label,form-check
+    </p>
+<form>
+    <div class="mb-3">
+        <label for="uid" class="form-label">아이디</label>
+        <input type="text" id="uid" name="uid" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">비밀번호</label>
+        <input type="password" id="pwd" name="pwd" class="form-control">
+    </div>
+    <div class="mb-3">
+        <input type="checkbox" id="isLogin"
+        class="form-check-input">
+        <label for="isLogin"
+        class="form-check-label">로그인 기억하기</label>
+    </div>
+    <div class="mb-3">
+        <button type="button" class="btn btn-danger">로그인</button>
+        <button type="button" class="btn btn-warning">아이디/비번찾기</button>
 
+    </div>
+</form>
+
+
+        <h2>폼요소 한줄로 나타내기</h2>
+<form>
+    <div class="row ">
+        <label for="uid2" class="form-label col-md-2">아이디</label>
+        <div class="col-md-9"><!-- // 한줄로 나타내려면 이코드 -->
+        <input type="text" id="uid2" name="uid" class="form-control"></div>
+    </div>
+    <div class="row">
+        <label for="pwd2" class="form-label col-md-2">비밀번호</label>
+        <div class="col-md-9">
+        <input type="password" id="pwd2" name="pwd" class="form-control"></div>
+    </div>
+    <div class="row">
+        <div>
+            <label class="col-md-2"></label>
+        <input type="checkbox" id="isLogin2"
+               class="form-check-input">
+        <label for="isLogin2"
+               class="form-check-label" >로그인 기억하기</label>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <label class="col-md-2"></label>
+        <button type="button" class="btn btn-danger" >로그인</button>
+        <button type="button"class="btn btn-warning">아이디/비번찾기</button>
+        </div>
+    </div>
+</form>
+<p></p>
+<h2>select,checkbox,radio
+</h2>
+<form>
+    <div class="row">
+        <label for="sido" class="form-label" col-md-2>시도</label>
+        <div class="col-md-2">
+            <select class="form-select" id="sido">
+                <option>-선택하세요-</option>
+                <option>서울</option>
+                <option>경기</option>
+                <option>인천</option>
+                <option>제주</option>
+            </select>
+        </div>
+    </div> <!-- // 시도 select -->
+
+    <div class="row">
+        <label for="hobby" class="form-label col-md-2">취미</label>
+        <div class="col-md-2">
+                <input type="checkbox" class="form-check-input" name="hobby" id="hobby" value="soccer">
+               <label class="form-check-label"> 축구</label>
+                <input type="checkbox" class="form-check-input"name="hobby"value="swim">
+            <label class="form-check-label">수영</label>
+
+            <input type="checkbox"class="form-check-input" name="hobby"value="trip">
+            <label class="form-check-label">여행</label>
+        </div>
+    </div>
+    <!-- //gender radio 성별 성별체크-->
+    <div class="row">
+
+        <label for="gernder" class="form-label col-md-2">성별</label>
+        <div class="col-md-3">
+            <input type="radio" class="form-check-input" name="gernder" id="gernder" value="male">
+            <label class="form-check-label"> 남성</label>
+            <input type="radio" class="form-check-input"name="gender"value="female">
+            <label class="form-check-label">여성</label>
+
+        </div>
+    </div>
+
+    <h2>floating label</h2>
+    <form>
+        <div class="row form-floating">
+            <input type="text" class="form-control" id="fuid" name="fuid" placeholder="아이디">
+            <label for="fuid">아이디</label>
+        </div>
+        <div class="row form-floating">
+            <input type="text" class="form-control" id="fpwd" name="fpwd" placeholder="비밀번호">
+            <label for="fpwd">비밀번호</label>
+        </div>
+    </form>
+    <h2>input group</h2>
+    <form>
+        <div class="input-group">
+
+            <input type="text" class="form-control" name="email1">
+            <span class="input-group-text">@</span>
+            <input  type="text" class="form-control" name="email2">
+        </div>
+        <div class="input-group">
+            <div class="input-group-text">
+                <input type="checkbox" class="form-check-input">
+
+            </div>
+            <input type="text" class="form-control">
+        </div>
+
+        <div class="input-group">
+            <input type="file" class="form-control">
+            <button type="button" class="btn btn-success">업로드하기</button>
+        </div>
+    </form>
+
+    <h2>폼유효성 검사</h2>
+    <p>html5에서 기본적으로 제공하는 폼 유효성 검사를novalidate라는 코드로 작동중지해 둠</p>
+    <p>그런 다음 needs-validation라는 클래스 선택자에 폼 유효성 검사를 수행하는 함수를 이벤트로 등록해 둠</p>
+
+
+    <form class="row needs-validation" novalidate>
+        <div class="col-md-4">
+            <label for="uerid" class="form-label">아이디</label>
+            <input type="text" id="uerid" name="uerid" class="form-control" required>
+        </div><!--아이디 -->
+        <div class="col-md-4">
+            <label for="password" class="form-label">비밀번호</label>
+            <input type="password" id="password" name="password" class="form-control" required>
+        </div><!--비밀번호 -->
+        <div class="col-md-4">
+            <label for="name" class="form-label">이름</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+        </div><!--이름 -->
+        <div class="col-md-12">
+            <input type="checkbox" class="form-check-input"
+            id="checkagree" required>
+            <label for="checkagree" class="form-check-label">이용약관 동의 합니다</label>
+            <div class="invalid-feedback">이용약관에 동의해주세요</div><!--여기 이부분 빠지면-->
+        </div><!--이용약관 -->
+        <div class="col-md-12">
+            <button type="submit" class="btn btn-primary">가입하기</button>
+        </div><!--버튼 -->
+    </form>
+
+
+
+
+</form>
+<script src="js/bs5/bootstrap.bundle.min.js"></script>
+<script>
+    //함수 정의 와 동시에 바로 실행하려면
+    //(함수정의)();
+    //let main =(){alert('hello world');};
+    //main();
+
+   //(()=>{alert('hello world')})();
+    (()=>{
+
+
+        const forms =document.querySelectorAll('.needs-validation');
+        console.log(forms);
+
+        Array.from(forms).forEach(form=>{
+            form.addEventListener('submit',e=>{
+                //console.log(form.checkValidity());
+                if(!form.checkValidity()){
+                e.preventDefault();
+                e.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            },false); //addEventlistner
+        }); //foreach
+    })();
+</script>
 </body>
 </html>
